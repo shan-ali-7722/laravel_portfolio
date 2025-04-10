@@ -1,0 +1,296 @@
+/* Home Page Specific Styles */
+
+/* Hero Section Enhancements */
+.hero-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(56, 189, 248, 0.1) 0%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    z-index: -1;
+    animation: pulse 8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* Add typing cursor effect to main title */
+.main-title {
+    position: relative;
+}
+
+.main-title::after {
+    content: '|';
+    position: absolute;
+    right: -10px;
+    animation: cursor 1s infinite step-end;
+    opacity: 0;
+}
+
+@keyframes cursor {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Add floating icons in the background */
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.1;
+    z-index: -1;
+    animation: float 15s infinite ease-in-out;
+}
+
+.floating-icon:nth-child(odd) {
+    color: var(--color-secondary);
+}
+
+.floating-icon-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-icon-2 {
+    top: 30%;
+    right: 12%;
+    animation-delay: 2s;
+}
+
+.floating-icon-3 {
+    bottom: 25%;
+    left: 8%;
+    animation-delay: 4s;
+}
+
+.floating-icon-4 {
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 6s;
+}
+
+.floating-icon-5 {
+    top: 40%;
+    left: 20%;
+    font-size: 2.5rem;
+    animation-delay: 3s;
+    color: #FF2D20; /* Laravel color */
+}
+
+.floating-icon-6 {
+    bottom: 40%;
+    right: 20%;
+    font-size: 2.5rem;
+    animation-delay: 5s;
+    color: #42b883; /* Vue.js color */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-10px, 10px) rotate(5deg);
+    }
+    50% {
+        transform: translate(10px, 15px) rotate(0deg);
+    }
+    75% {
+        transform: translate(15px, -10px) rotate(-5deg);
+    }
+}
+
+/* Enhanced Stats Styles */
+.stat {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    animation: shimmer 3s infinite;
+}
+
+.stat:nth-child(2)::before {
+    animation-delay: 0.5s;
+}
+
+.stat:nth-child(3)::before {
+    animation-delay: 1s;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Section transitions */
+section {
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content::before {
+        width: 300%;
+        height: 300%;
+    }
+    
+    /* Fix for content hidden under navbar and scroll indicator */
+    .hero-intro {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .main-title, .subtitle {
+        padding: 0 0.5rem;
+    }
+    
+    /* Adjust floating icons for mobile */
+    .floating-icon {
+        opacity: 0.07;
+        font-size: 1.8rem;
+    }
+    
+    .floating-icon-5 {
+        top: 25%;
+        left: 12%;
+        font-size: 2rem;
+    }
+    
+    .floating-icon-6 {
+        bottom: 30%;
+        right: 12%;
+        font-size: 2rem;
+    }
+}
+
+/* Add some custom styling to expertise cards for home page */
+.expertise-card {
+    transition: all 0.3s ease;
+}
+
+.expertise-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.expertise-card:hover .card-header i {
+    transform: rotateY(360deg);
+    color: var(--color-secondary);
+}
+
+.card-header i {
+    transition: transform 0.8s ease, color 0.3s ease;
+}
+
+/* Make the featured project more prominent */
+.featured-project {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Add some style to project cards */
+.project-card {
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-image::before {
+    opacity: 1;
+}
+
+.project-card .project-info {
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline item animation */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.timeline-item.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.timeline-item:nth-child(3) {
+    transition-delay: 0.6s;
+} 
